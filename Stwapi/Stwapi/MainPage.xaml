@@ -4,7 +4,34 @@
              x:Class="Stwapi.MainPage">
 
     <StackLayout BackgroundColor="Black">
-        <Label Text="Star Wars" FontSize="52" TextColor="Yellow" HorizontalTextAlignment="Center" Margin="0,30,0,0"/>
+        <Button Text="Search" HorizontalOptions="Start" VerticalOptions="Start" TextColor="Yellow" BackgroundColor="Transparent"/>
+        <Label Text="Star Wars" FontSize="52" TextColor="Yellow" HorizontalTextAlignment="Center" Margin="0,0,0,30"/>
+
+        <ListView x:Name="EpisodeList" ItemsSource="{Binding Movies}" HasUnevenRows="True" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+
+                            <Button Text="{Binding Title}" 
+                                    Command="{Binding Path=BindingContext.EpisodeCommand,
+                                    Source={x:Reference Name = EpisodeList}}"
+                                    CommandParameter="{Binding Url}" 
+                                    TextColor="Yellow" 
+                                    FontSize="Large" 
+                                    BackgroundColor="Transparent"/>
+                            
+                            <Label Text="{Binding OpeningCrawl}" 
+                                   TextColor="Yellow" 
+                                   FontSize="12" 
+                                   HorizontalTextAlignment="Center" 
+                                   IsVisible="False"/>
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>

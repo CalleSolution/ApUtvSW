@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stwapi.Services;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +10,9 @@ namespace Stwapi
         public App()
         {
             InitializeComponent();
+            DependencyService.Register<IApiService, ApiService>();
+            MainPage = new NavigationPage(new MainPage());
 
-            MainPage = new MainPage();
         }
 
         protected override void OnStart()

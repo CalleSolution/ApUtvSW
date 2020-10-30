@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stwapi.View.EpisodeViewPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="black">
+            <Label Text="{Binding Episode.Title}" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label Text="{Binding Episode.OpeningCrawl}" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Small"/>
+            <Label Margin="0,20,0,0" Text="Characters" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <ListView ItemsSource="{Binding Episode}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Episode.Characters}" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

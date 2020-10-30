@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Stwapi.View;
+using Stwapi.ViewModels;
+using System;
 using Xamarin.Forms;
 
 namespace Stwapi
 {
     public partial class MainPage : ContentPage
     {
+        private readonly MainPageViewModel mainview;
+        
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = mainview = new MainPageViewModel(Navigation);
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await mainview.GetMovies();
         }
     }
 }
