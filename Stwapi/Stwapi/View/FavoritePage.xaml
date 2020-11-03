@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stwapi.View.FavoritePage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Black">
+            <ListView x:Name="FavoritesList" ItemsSource="{Binding Favorites}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                
+                                    <Grid Padding="0" >
+                                        
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding Name}" 
+                                           VerticalOptions="Center" 
+                                           Grid.Column="0" 
+                                           TextColor="Yellow"
+                                           FontSize="16"/>
+
+                                    <Label Text="{Binding Gender}" 
+                                           VerticalOptions="Center" 
+                                           HorizontalOptions="Center"
+                                           Grid.Column="1" 
+                                           TextColor="Yellow"
+                                           FontSize="16"/>
+
+                                    <Button Text="Remove Favorite" 
+                                            BackgroundColor="Transparent" 
+                                            VerticalOptions="Center" 
+                                            Grid.Column="2" 
+                                            TextColor="Yellow"
+                                            Clicked="Button_Clicked"
+                                            Command="{Binding Path=BindingContext.RemoveFavoritesCommand,
+                                            Source={x:Reference Name = FavoritesList}}"
+                                            CommandParameter="{Binding .}"/>
+
+                                    </Grid>
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

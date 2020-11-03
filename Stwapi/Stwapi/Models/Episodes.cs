@@ -42,7 +42,7 @@ namespace Stwapi.Models
         public string ReleaseDate { get; set; }
 
         [JsonProperty("characters")]
-        public IList<string> Characters { get; set; }
+        public ObservableCollection<string> Characters { get; set; }
 
         [JsonProperty("planets")]
         public IList<string> Planets { get; set; }

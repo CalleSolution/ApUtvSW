@@ -6,13 +6,31 @@
         <StackLayout BackgroundColor="black">
             <Label Text="{Binding Episode.Title}" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Large"/>
             <Label Text="{Binding Episode.OpeningCrawl}" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Small"/>
-            <Label Margin="0,20,0,0" Text="Characters" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Large"/>
-            <ListView ItemsSource="{Binding Episode}">
+            <Label Margin="0,20,0,0" Text="Starring Characters" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <ListView x:Name="CharacterList" ItemsSource="{Binding MovieCharacter}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Episode.Characters}" TextColor="Yellow" HorizontalTextAlignment="Center" FontSize="Small"/>
+                            <StackLayout Orientation="Horizontal" Margin="0" Padding="0">
+                                
+                                    <Button Text="{Binding Name}"
+                                            TextColor="Yellow" 
+                                            FontSize="18" 
+                                            HorizontalOptions="StartAndExpand"
+                                            BackgroundColor="Transparent"/>
+                                
+                                    <Button Text="Add Favorite" 
+                                            TextColor="Yellow" 
+                                            FontSize="12" 
+                                            BackgroundColor="Transparent" 
+                                            HorizontalOptions="EndAndExpand" 
+                                            VerticalOptions="CenterAndExpand" 
+                                            IsVisible="true"
+                                            Clicked="AddFavorite"
+                                            Command="{Binding Path=BindingContext.SaveFavoriteCommand,
+                                            Source={x:Reference Name = CharacterList}}"
+                                            CommandParameter="{Binding .}"/>
+                                
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

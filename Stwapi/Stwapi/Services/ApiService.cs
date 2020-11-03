@@ -12,6 +12,12 @@ namespace Stwapi.Services
 {
     class ApiService : IApiService
     {
+        public async Task<Characters> GetCharacter(string character)
+        {
+            var data = await GetUrl(character);
+            return JsonConvert.DeserializeObject<Characters>(data);
+        }
+
         public async Task<Result> GetEpisode(string url)
         {
             var data = await GetUrl(url);

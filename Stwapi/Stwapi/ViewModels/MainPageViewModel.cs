@@ -31,6 +31,7 @@ namespace Stwapi.ViewModels
             _movies = new ObservableCollection<Result>();
             Navigation = navigation;
             EpisodeCommand = new Command(async (o) => await GotoEpisodePage(o.ToString()));
+            FavoriteCommand = new Command(async () => await GotoFavoritePage());
         }
 
         public async Task GetMovies()
@@ -58,5 +59,11 @@ namespace Stwapi.ViewModels
             await Navigation.PushAsync(new EpisodeViewPage(url));
         }
 
+        public ICommand FavoriteCommand { get; set; }
+
+        public async Task GotoFavoritePage()
+        {
+            await Navigation.PushAsync(new FavoritePage());
+        }
     }
 }

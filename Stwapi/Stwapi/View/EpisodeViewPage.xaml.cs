@@ -32,5 +32,12 @@ namespace Stwapi.View
             await viewmodel.GetEpisode(_url);
               
         }
+
+        private void AddFavorite(object sender, EventArgs e)
+        {
+            var o = (Button)sender;
+            DisplayAlert("Favorites", "Tillagd i favoriter", "OK");
+            o.IsVisible = false;
+        }
     }
 }

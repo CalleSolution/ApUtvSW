@@ -12,5 +12,7 @@ namespace Stwapi.Services
         Task <Episodes> GetMovies();
 
         Task <Result> GetEpisode(string url);
+
+        Task <Characters> GetCharacter(string character);
     }
 }

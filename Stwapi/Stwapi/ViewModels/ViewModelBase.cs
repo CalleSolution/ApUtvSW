@@ -1,4 +1,6 @@
-﻿using Stwapi.Services;
+﻿using Stwapi.Models;
+using Stwapi.Services;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
@@ -9,6 +11,8 @@ namespace Stwapi.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public static ObservableCollection<Characters> FavoriteList = new ObservableCollection<Characters>();
+
         public IApiService apiService;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string name = null)
@@ -18,7 +22,7 @@ namespace Stwapi.ViewModels
 
         public ViewModelBase()
         {
-            apiService = DependencyService.Get<IApiService>();
+            apiService = DependencyService.Get<IApiService>(); 
         }
     }
 }
